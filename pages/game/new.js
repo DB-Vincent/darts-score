@@ -52,7 +52,8 @@ export default function Create() {
             axios.post('/api/game', {
                 player1: Number(players[0]),
                 player2: Number(players[1]),
-                score: Number(data.score)
+                scorePlayer1: Number(data.score),
+                scorePlayer2: Number(data.score)
             })
             .then((res) => {
                 router.push(`/game/${res.data.id}`)

@@ -15,13 +15,14 @@ model User {
 }
 
 model Game {
-  id          Int           @id @default(autoincrement())
-  createdAt   DateTime      @default(now())
-  player1Id   Int 
-  player1     User          @relation("player1", fields: [player1Id], references: [id]) 
-  player2Id   Int  
-  player2     User          @relation("player2", fields: [player2Id], references: [id]) 
-  score       Int
+  id              Int           @id @default(autoincrement())
+  createdAt       DateTime      @default(now())
+  player1Id       Int 
+  player1         User          @relation("player1", fields: [player1Id], references: [id]) 
+  player2Id       Int  
+  player2         User          @relation("player2", fields: [player2Id], references: [id]) 
+  scorePlayer1    Int
+  scorePlayer2    Int
 }
 
 

@@ -8,7 +8,8 @@ export default async (req, res) => {
             data: {
                 player1Id: req.body.player1,
                 player2Id: req.body.player2,
-                score: req.body.score
+                scorePlayer1: req.body.scorePlayer1,
+                scorePlayer2: req.body.scorePlayer2
             }
         }).then(async (game) => {
             await prisma.$disconnect();

@@ -40,7 +40,7 @@ export default function Home() {
             <td>{game.createdAt}</td>
             <td>{game.player1.name}</td>
             <td>{game.player2.name}</td>
-            <td>{game.score}</td>
+            <td>{game.scorePlayer1} / {game.scorePlayer2}</td>
           </tr>
           )
         }) }
