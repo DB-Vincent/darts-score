@@ -32,6 +32,7 @@ export default function Home() {
           <th>Game date</th>
           <th>Player 1</th>
           <th>Player 2</th>
+          <th>Score</th>
         </tr>
         { gameData.map((game) => {
           return (
@@ -39,6 +40,7 @@ export default function Home() {
             <td>{game.createdAt}</td>
             <td>{game.player1.name}</td>
             <td>{game.player2.name}</td>
+            <td>{game.score}</td>
           </tr>
           )
         }) }

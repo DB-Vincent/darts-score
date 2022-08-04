@@ -9,9 +9,10 @@ export default function Create() {
     const [userData, setUserData] = useState();
     const [loading, setLoading] = useState(true);
     const [players, setPlayers] = useState([]);
+    const [score, setScore] = useState(0);
     const [checkedItems, setCheckedItems] = useState({});
     const router = useRouter();
-    const { handleSubmit, watch, formState: { errors } } = useForm();
+    const { handleSubmit, register, formState: { errors } } = useForm();
 
     useEffect(() => {
         axios.get("/api/user")
@@ -46,12 +47,12 @@ export default function Create() {
         console.log(tempPlayers)
     };
 
-    const createGame = async () => {   
+    const createGame = async (data) => {
         if (players.length === 2) {
             axios.post('/api/game', {
                 player1: Number(players[0]),
                 player2: Number(players[1]),
-                score: 501
+                score: Number(data.score)
             })
             .then((res) => {
                 router.push(`/game/${res.data.id}`)
@@ -79,16 +80,17 @@ export default function Create() {
                         <>
                             <label key={user.id}>
                                 {user.name}
-                                <Checkbox
-                                    name={user.id}
-                                    checked={checkedItems[user.id]}
-                                    onChange={handleChange}
-                                />
+                                <input type="checkbox" name={user.id} checked={checkedItems[user.id]} onChange={handleChange}/>
                             </label>
                         </>
                     )
                 })}
-                
+                <label for="score">Choose a start score:
+                    <select name="score" id="score" {...register("score")}>
+                        <option value="301">301</option>
+                        <option value="501">501</option>
+                    </select>
+                </label>
                 <input type="submit" />
             </form>}
             
