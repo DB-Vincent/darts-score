@@ -23,6 +23,7 @@ model Game {
   player2         User          @relation("player2", fields: [player2Id], references: [id]) 
   scorePlayer1    Int
   scorePlayer2    Int
+  currentPlayer    Int           @default(0)
 }
 
 

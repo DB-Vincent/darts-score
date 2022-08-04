@@ -33,6 +33,7 @@ export default function Home() {
           <th>Player 1</th>
           <th>Player 2</th>
           <th>Score</th>
+          <th>Link to game</th>
         </tr>
         { gameData.map((game) => {
           return (
@@ -41,6 +42,7 @@ export default function Home() {
             <td>{game.player1.name}</td>
             <td>{game.player2.name}</td>
             <td>{game.scorePlayer1} / {game.scorePlayer2}</td>
+            <td><Link href={"/game/" + game.id}>Go to game</Link></td>
           </tr>
           )
         }) }

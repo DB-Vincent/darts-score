@@ -33,7 +33,8 @@ export default async (req, res) => {
             },
             data: {
                 scorePlayer1: req.body.scorePlayer1,
-                scorePlayer2: req.body.scorePlayer2
+                scorePlayer2: req.body.scorePlayer2,
+                currentPlayer: req.body.currentPlayer
             }
         }).then(async (game) => {
             res.status(200).json(game);

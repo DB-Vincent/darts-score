@@ -25,7 +25,8 @@ export default function Page() {
             setGameData(res.data);
 
             updateScorePlayer1(res.data.scorePlayer1);
-            updateScorePlayer2(res.data.scorePlayer2)
+            updateScorePlayer2(res.data.scorePlayer2);
+            updateCurrentPlayer(res.data.currentPlayer);
 
             setLoading(false);
         });
@@ -62,12 +63,16 @@ export default function Page() {
         updateCurrentDarts(listOfDarts)
         
         if ((listOfDarts.length % 3) === 0) {
-            if (currentPlayer === 0) updateCurrentPlayer(1)
-            else updateCurrentPlayer(0)
+            let current = 0;
+            if (currentPlayer === 0) current = 1
+            else current = 0
+
+            updateCurrentPlayer(current)
 
             axios.post(`/api/game/${gameId}`, {
                 scorePlayer1: player1,
-                scorePlayer2: player2
+                scorePlayer2: player2,
+                currentPlayer: current
             })
             .then((res) => {
                 console.log(res)
