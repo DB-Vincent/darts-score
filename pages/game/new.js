@@ -22,12 +22,6 @@ export default function Create() {
         });
     });
 
-    const Checkbox = ({ type = "checkbox", name, checked = false, onChange }) => {      
-        return (
-            <input type={type} name={name} checked={checked} onChange={onChange} />
-        );
-    };
-
     const handleChange = event => {
         setCheckedItems({
           ...checkedItems,
@@ -53,7 +47,8 @@ export default function Create() {
                 player1: Number(players[0]),
                 player2: Number(players[1]),
                 scorePlayer1: Number(data.score),
-                scorePlayer2: Number(data.score)
+                scorePlayer2: Number(data.score),
+                type: data.type
             })
             .then((res) => {
                 router.push(`/game/${res.data.id}`)
@@ -90,6 +85,13 @@ export default function Create() {
                     <select name="score" id="score" {...register("score")}>
                         <option value="301">301</option>
                         <option value="501">501</option>
+                    </select>
+                </label>
+                <label for="type">Choose a game type:
+                    <select name="type" id="type" {...register("type")}>
+                        <option value="straight-out">Straight-out</option>
+                        <option value="double-out">Double-out</option>
+                        <option value="first-to">First to 0</option>
                     </select>
                 </label>
                 <input type="submit" />

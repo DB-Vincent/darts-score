@@ -12,6 +12,7 @@ model User {
   name                 String
   gamesAsPlayer1       Game[]     @relation("player1")
   gamesAsPlayer2       Game[]     @relation("player2")
+  gamesWon             Game[]     @relation("winner")
 }
 
 model Game {
@@ -23,7 +24,10 @@ model Game {
   player2         User          @relation("player2", fields: [player2Id], references: [id]) 
   scorePlayer1    Int
   scorePlayer2    Int
-  currentPlayer    Int           @default(0)
+  currentPlayer   Int           @default(0)
+  type            String
+  winner          User?          @relation("winner", fields: [winnerId], references: [id]) 
+  winnerId        Int?
 }
 
 

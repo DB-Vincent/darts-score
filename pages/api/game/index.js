@@ -9,7 +9,8 @@ export default async (req, res) => {
                 player1Id: req.body.player1,
                 player2Id: req.body.player2,
                 scorePlayer1: req.body.scorePlayer1,
-                scorePlayer2: req.body.scorePlayer2
+                scorePlayer2: req.body.scorePlayer2,
+                type: req.body.type
             }
         }).then(async (game) => {
             await prisma.$disconnect();
@@ -49,7 +50,8 @@ export default async (req, res) => {
         await prisma.game.findMany({
             include: {
                 player1: true,
-                player2: true
+                player2: true,
+                winner: true
             }
         }).then(async (games) => {
             await prisma.$disconnect();
