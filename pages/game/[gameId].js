@@ -170,8 +170,8 @@ export default function Page() {
                             setTriple(!triple) 
                             if (double) setTriple(!double) 
                         }}>Triple</button>
-                        { [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25].map((index, score) => {
-                            return <button key={index} className="inline-block rounded-lg w-full py-3 px-4 bg-cyan-600 font-medium text-xl text-white hover:bg-cyan-800" onClick={() => { addDart(score) }}>{score}</button>
+                        { [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25].map((score) => {
+                            return <button key={score} className="inline-block rounded-lg w-full py-3 px-4 bg-cyan-600 font-medium text-xl text-white hover:bg-cyan-800" onClick={() => { addDart(score) }}>{score}</button>
                         }) }
                     </div>}
                 </>}
