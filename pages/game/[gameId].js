@@ -157,7 +157,7 @@ export default function Page() {
                 
                     {(gameData.winner) 
                     ? <div className="text-3xl w-full text-center">
-                        <iframe src="https://giphy.com/embed/EWWdvQngcLt6g" width="480" height="284" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p></p>
+                        <iframe src="https://giphy.com/embed/EWWdvQngcLt6g" width="480" height="284" frameBorder="0" allowFullScreen></iframe><p></p>
                         Congratulations {gameData.winner.name}, you won! 🎉
                     </div>
                     : <div className='grid grid-cols-3 grid-rows-8 gap-2 mt-8'>
