@@ -1,5 +1,4 @@
 import Head from 'next/head';
-
 import GameList from '../components/GameList';
 import Hero from '../components/Hero';
 import UserList from '../components/UserList';

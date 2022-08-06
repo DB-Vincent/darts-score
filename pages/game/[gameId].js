@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Head from 'next/head';
 
 export default function Page() {
     const router = useRouter();
@@ -134,25 +135,48 @@ export default function Page() {
 
     return (
         <div>
-            { loading ? <p>Loading data..</p> : <>
-                <h1>Game ID: {gameData.id}</h1>
+            <Head>
+                <title>Darts score</title>
+                <meta name="description" content="NextJS application to calculate darts scores" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
 
-                <p>{gameData.player1.name}: {scorePlayer1}</p>
-                <p>{gameData.player2.name}: {scorePlayer2}</p>
+            <main className="container mx-auto px-4">
+                { loading ? <p>Loading data..</p> : <>
 
-                <p>Type of game: {gameType}</p>
-            
-                {(gameData.winner) 
-                ? <p>Congratulations {gameData.winner.name}, you won! 🎉</p>
-                : <div className='grid grid-cols-3 grid-rows-8 gap-4'>
-                    <button onClick={() => { addDart(0) }}>Miss</button>
-                    <button onClick={() => { setDouble(!double) }}>Double</button>
-                    <button onClick={() => { setTriple(!triple) }}>Triple</button>
-                    { [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25].map((index, score) => {
-                        return <button key={index} onClick={() => { addDart(score) }}>{score}</button>
-                    }) }
-                </div>}
-            </>}
+                    <div className="mt-4 w-full">
+                        <div className={currentPlayer === 0 ? "w-2/3 border-2 bg-slate-300 inline-block p-4" : "w-1/3 border inline-block p-4" }>
+                            <span className="block text-xl">{gameData.player1.name}</span>
+                            <span className="text-2xl text-bold">{scorePlayer1}</span>
+                        </div>
+                        <div className={currentPlayer === 1 ? "w-2/3 border-2 bg-slate-300 inline-block p-4" : "w-1/3 border inline-block p-4" }>
+                            <span className="block text-xl">{gameData.player2.name}</span>
+                            <span className="text-2xl text-bold">{scorePlayer2}</span>
+                        </div>
+                    </div>
+                
+                    {(gameData.winner) 
+                    ? <div className="text-3xl w-full text-center">
+                        <iframe src="https://giphy.com/embed/EWWdvQngcLt6g" width="480" height="284" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p></p>
+                        Congratulations {gameData.winner.name}, you won! 🎉
+                    </div>
+                    : <div className='grid grid-cols-3 grid-rows-8 gap-2 mt-8'>
+                        <button className="inline-block rounded-lg w-full py-3 px-4 bg-green-600 font-medium text-xl text-white hover:bg-green-800" onClick={() => { addDart(0) }}>Miss</button>
+                        <button className="inline-block rounded-lg w-full py-3 px-4 bg-green-600 font-medium text-xl text-white hover:bg-green-800" onClick={() => { 
+                            setDouble(!double)
+                            if (triple) setTriple(!triple) 
+                        }}>Double</button>
+                        <button className="inline-block rounded-lg w-full py-3 px-4 bg-green-600 font-medium text-xl text-white hover:bg-green-800" onClick={() => { 
+                            setTriple(!triple) 
+                            if (double) setTriple(!double) 
+                        }}>Triple</button>
+                        { [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25].map((index, score) => {
+                            return <button key={index} className="inline-block rounded-lg w-full py-3 px-4 bg-cyan-600 font-medium text-xl text-white hover:bg-cyan-800" onClick={() => { addDart(score) }}>{score}</button>
+                        }) }
+                    </div>}
+                </>}
+            </main>
         </div>
+        
     );
 }

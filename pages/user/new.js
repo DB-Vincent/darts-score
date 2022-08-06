@@ -27,7 +27,7 @@ export default function Create() {
 
       <main className="container mx-auto px-4">
         <h1 className="text-3xl font-bold w-full text-center mt-6">Create player</h1>
-        <Link href="/">🠔 Home</Link>
+        <Link href="/">Back to home</Link>
         
         <form onSubmit={createUser} className="mt-4">
           <span className="text-gray-700">Name:</span>

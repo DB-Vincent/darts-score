@@ -70,7 +70,7 @@ export default function Create() {
 
             <main className="container mx-auto px-4">
                 <h1 className="text-3xl font-bold w-full text-center mt-6">Create game</h1>
-                <Link href="/">🠔 Home</Link>
+                <Link href="/">Back to home</Link>
                 
                 <div className="mt-4">
                     {loading ? <p>Loading users..</p> : <form onSubmit={handleSubmit(createGame)} className="flex flex-col">
