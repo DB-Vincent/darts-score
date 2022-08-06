@@ -60,7 +60,13 @@ export default async (req, res) => {
             res.status(200).json({ "error": "User doesn't exist!" });
         }        
     } else if (req.method === 'GET') {
-        await prisma.user.findMany().then(async (user) => {
+        await prisma.user.findMany({
+            include: {
+                gamesAsPlayer1: true,
+                gamesAsPlayer2: true,
+                gamesWon: true
+            }
+        }).then(async (user) => {
             await prisma.$disconnect();
             res.status(200).json(user);
         }).catch(async (e) => {
