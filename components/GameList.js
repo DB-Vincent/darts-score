@@ -27,7 +27,7 @@ const GameList = () => {
                         return (
                             <li key={game.id}>
                                 {game.winner 
-                                ? <p><span className="text-medium">{game.player1.name}</span> vs <span className="text-medium">{game.player2.name}</span>: {gameData.winner.name} won!</p>
+                                ? <p><span className="text-medium">{game.player1.name}</span> vs <span className="text-medium">{game.player2.name}</span>: {game.winner.name} won!</p>
                                 : <a href={"/game/" + game.id}><span className="text-medium">{game.player1.name}</span> vs <span className="text-medium">{game.player2.name}</span>: {game.scorePlayer1}/{game.scorePlayer2}</a>}
                             </li>
                             

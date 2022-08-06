@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Head from 'next/head';
+import Link from 'next/link';
 
 export default function Page() {
     const router = useRouter();
@@ -159,6 +160,7 @@ export default function Page() {
                     ? <div className="text-3xl w-full text-center">
                         <iframe src="https://giphy.com/embed/EWWdvQngcLt6g" width="480" height="284" frameBorder="0" allowFullScreen></iframe><p></p>
                         Congratulations {gameData.winner.name}, you won! 🎉
+                        <Link href="/">Get back home</Link>
                     </div>
                     : <div className='grid grid-cols-3 grid-rows-8 gap-2 mt-8'>
                         <button className="inline-block rounded-lg w-full py-3 px-4 bg-green-600 font-medium text-xl text-white hover:bg-green-800" onClick={() => { addDart(0) }}>Miss</button>
